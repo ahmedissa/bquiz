@@ -164,7 +164,7 @@ module.exports = function (socket) {
   socket.on('game:end',function(msg){
     //save and remove data redis -> mongodb
   	var username = socket.client.request.user.username;
-     pub.publish('remove', JSON.stringify({type: 'remove', data: ClientsToGame[username], user:socket.client.request.user }));
+     pub.publish('save', JSON.stringify({type: 'remove', data: ClientsToGame[username], user:socket.client.request.user }));
 
   	 ClientsToGame[username] = undefined;
 
