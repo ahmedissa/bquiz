@@ -1,0 +1,72 @@
+        <div class="ui page grid overview" ng-show="!loading">
+            <div class="ui two wide column"></div>
+            <div class="twelve wide column">
+
+                <div class="ui one column center  aligned stackable  grid">
+                <div class="column">
+
+                	<div class="ui large labels">
+	                  <div class="ui label" ng-model="points">
+        						Points
+        						<span class="detail"><i class="red icon">P</i> {{ points }}</span>
+        					' </div>
+        					  <div class="ui label" ng-model="date">
+        					  	<i class=" time red icon" />
+        					    {{ date }}
+        					  </div>
+
+					</div>
+
+                </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>        
+
+        <div ng-repeat="plant in plants" class="ui page grid overview segment">
+
+            <div class="ui two wide column"></div>
+            <div class="twelve wide column">
+                <div class="ui one column stackable  grid" ng-show="loading">
+
+                <div class="column">
+                    <div class="ui active inverted dimmer">
+                      <div class="ui text loader">Loading</div>
+                    </div>
+                  <div style="height: 500px" ></div>
+
+                  </div>
+                </div>
+
+
+                <div class="ui two column stackable grid" ng-show="!loading">
+                <div class="column">
+                    <div class="ui background center aligned segment">
+                        <img id="pfimg" class="ui image" ng-src="{{plant.associatedMedia}}" >
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui  segment">
+
+                          
+                          <div  ng-repeat-start="info in plant.infos track by $index"  ng-class="{'ui blue ' : true}" >
+                            <div class="ui ribbon label">{{info[0]}}</div>
+
+                             <p>{{info[1]}}</p></div>
+                          </p >
+                          <div ng-repeat-end/>
+
+                    </div>
+                </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>

@@ -1,0 +1,58 @@
+        <div class="ui page grid overview segment">
+            <div class="ui two wide column"></div>
+            <div class="twelve wide column">
+                <div class="ui three column stackable  grid">
+                <div class="column">
+                    <div class="ui background center aligned segment">
+                        <img class="circular ui image pavatar" src="images/test.jpeg">
+                        <h3 class="ui" ng-model="name"><i class=" green user icon"></i>{{name}}</h3>
+                        <h3 class="ui" ng-model="score"><i class="red icon">P</i>{{score}}</h3> 
+                        <a class="ui label" ng-click="logout()">logout</a>
+                        <p/>
+                        <a class="ui green button" href="/game" ng-model="game">{{game || "new game"}}</a>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <h4 class="ui inverted green top attached header">
+                            Latest Games
+                    </h4>                    
+                    <div class="ui segment attached">
+
+                        <div class="ui  list">
+                          <li class="item" ng-repeat="game in lgames">
+                            <a ng-href="/game/{{game._id}}">{{game.right}}/10</a> # <i class="time red icon"></i>{{convertdate(game.date)}}
+                          </li>
+                        </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="column">
+                    <h4 class="ui inverted green top attached header">
+                            Top Players
+                    </h4>                    
+                    <div class="ui segment attached">
+
+                        <div class="ui divided list">
+                          <li class="item" ng-repeat="user in tusers">
+                            <i class="ui circular green icon">{{$index+1}}</i>
+                            <div class="content">
+                              <div class="header" ng-href="/game/{{game._id}}">{{user.username}}</div>
+                              <i class="red icon">P</i>{{user.score}}
+                            </div>                            
+
+
+                          </li>
+                        </div>
+                    </div>
+                  </div>
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>

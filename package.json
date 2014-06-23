@@ -1,0 +1,25 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "basex": "^0.6.3",
+    "body-parser": "latest",
+    "connect-redis": "latest",
+    "cookie-parser": "1.0.1",
+    "crypto": "latest",
+    "ejs": "latest",
+    "express": "latest",
+    "express-error-handler": "latest",
+    "express-session": "latest",
+    "libxmljs": "^0.10.0",
+    "method-override": "latest",
+    "mongoose": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "passport.socketio": "latest",
+    "redis": "^0.10.3",
+    "socket.io": "latest",
+    "underscore": "latest"
+  }
+}

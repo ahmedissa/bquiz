@@ -1,0 +1,63 @@
+        <div class="ui page grid overview" ng-show="!loading">
+            <div class="ui two wide column"></div>
+            <div class="twelve wide column">
+
+                <div class="ui one column stackable  grid">
+                <div class="column">
+                    <div class="ui basic segment">
+                      <div class="ui active striped progress">
+                        <div class="bar prog" ng-style="myStyle" ng-model="progress">{{progress}}</div>
+                      </div>
+                    </div>
+                </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>        
+
+        <div class="ui page grid overview segment">
+
+            <div class="ui two wide column"></div>
+            <div class="twelve wide column">
+                <div class="ui one column stackable  grid" ng-show="loading">
+
+                <div class="column">
+                    <div class="ui active inverted dimmer">
+                      <div class="ui text loader">Loading</div>
+                    </div>
+                  <div style="height: 500px" ></div>
+
+                  </div>
+                </div>
+
+
+                <div class="ui two column stackable grid" ng-show="!loading">
+                <div class="column">
+                    <div class="ui background center aligned segment">
+                        <img id="pfimg" class="ui image" ng-src="{{img}}" >
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="ui center aligned basic segment">
+
+                          </p>
+                          
+                          <button  ng-repeat-start="answer in answers track by $index" ng-disabled="isDisable" ng-class="{'fluid ui button' : true, 'green' : correctid == answer , 'red' : correctid != answer && isDisable}" ng-click="sendanswer(answer)">{{answer}}</button>
+                          </p >
+                          <div ng-repeat-end/>
+                          <div class="fluid ui black button" ng-click="quit()">Quit</div>
+
+                    </div>
+                </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>

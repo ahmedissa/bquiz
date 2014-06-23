@@ -1,0 +1,75 @@
+body {
+    padding: 50px;
+    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif/*rtl:prepend:"Droid Arabic Kufi","Droid Sans", */;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif/*rtl:prepend:"Droid Arabic Kufi","Droid Sans", */;
+}
+
+.ui.background {
+    background: url('http://semantic-ui.com/images/bg.jpg');
+}
+#card{
+    width: 300px;
+    margin: 0 auto;
+}
+
+.pavatar{
+    margin: 0 auto;
+    width: 66px;
+
+
+}
+
+
+.prog {
+    -webkit-animation: finish 10s ease-in-out infinite;
+    text-align: center;
+    color: #fff;
+}
+
+
+@-webkit-keyframes finish {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@-moz-keyframes finish {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes finish {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+
+.ui.list a{
+
+  color:#ccc;
+}

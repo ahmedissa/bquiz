@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Botanik Quiz</title>
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/stylesheets/semantic.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="author" href="humans.txt">
+    </head>
+    <body ng-app="bqApp">
+
+
+        <div ng-include="" src="'/partials/logo.html'"></div>
+        <div ng-view=""></div>
+
+
+       
+        <script src="/javascripts/jquery-1.11.1.min.js"></script>
+        <script src="/javascripts/semantic.js"></script>
+
+        <script src="/bower_components/moment/moment.js"></script>
+        <script src="https://cdn.socket.io/socket.io-1.0.4.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-route/angular-route.js"></script>
+        <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="/bower_components/angular-resource/angular-resource.js"></script>
+
+        <script src="/bower_components/angular-socket-io/socket.js"></script>
+
+
+        <script src="/javascripts/app.js"></script>
+        <script src="/bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>        
+        <script src="/javascripts/controllers/account.js"></script>
+
+        <script src="/javascripts/controllers/login.js"></script>
+        <script src="/javascripts/controllers/main.js"></script>
+        <script src="/javascripts/controllers/signup.js"></script>
+        <script src="/javascripts/controllers/game.js"></script>
+        <script src="/javascripts/controllers/gameinfo.js"></script>
+
+        <script src="/javascripts/services/Auth.js"></script>
+        <script src="/javascripts/services/Session.js"></script>
+        <script src="/javascripts/services/User.js"></script>
+        <script src="/javascripts/services/Socket.js"></script>
+        <script src="/javascripts/services/Game.js"></script>
+
+    </body>
+</html>
