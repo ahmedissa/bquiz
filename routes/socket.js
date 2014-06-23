@@ -1,8 +1,8 @@
 var  _ = require('underscore'),
     redis = require("redis"),
-   // client = redis.createClient(),
-   // pub = redis.createClient(),
-   // storge = redis.createClient();
+    client = redis.createClient(),
+    pub = redis.createClient(),
+    storge = redis.createClient();
     mongoose = require('mongoose'),
     basex = require('../Basex'),
     Game = mongoose.model('Game'),
@@ -28,7 +28,7 @@ var Questions = [
 			{id: 10, image: "http://ww2.bgbm.org/herbarium/images/B/-W/19/38/B_-W_19387%20-01%200.jpg", answers: ["2","4","5","6"], solution: 0 }];
 
 
-/*
+
 
 storge.keys('user:*', function (err, keys) {
   if (err) return console.log(err);
@@ -86,7 +86,7 @@ client.on("message", function (channel, message) {
 });
 
  client.subscribe("save");
-*/
+
 
 // save game first in mogogdb 
 // change the data after the finisch ? 
@@ -112,7 +112,7 @@ module.exports = function (socket) {
         ClientsToGame[uname] = {date: (new Date()).toString(), username:uname, righta: 0, plants: ids, questions: qs, playeranswers: [false,false,false,false,false,false,false,false,false,false], postion: 0};
         socket.emit('game:new',ClientsToGame[uname]);
 
-       // pub.publish('save',JSON.stringify({type: 'set', data: ClientsToGame[uname]}));
+        pub.publish('save',JSON.stringify({type: 'set', data: ClientsToGame[uname]}));
         console.log("new game");
 
 
@@ -143,7 +143,7 @@ module.exports = function (socket) {
       };
 
       // redis update
-     // pub.publish('save', JSON.stringify({type: 'set', data: game}));
+      pub.publish('save', JSON.stringify({type: 'set', data: game}));
 
       if (game.postion != 9 ) {
 
@@ -153,7 +153,7 @@ module.exports = function (socket) {
 
       }else{
 
-     //   pub.publish('save', JSON.stringify({type: 'remove', data: game, user:socket.client.request.user }));
+        pub.publish('save', JSON.stringify({type: 'remove', data: game, user:socket.client.request.user }));
 
         // remove redis -> save data mongodb -> send to user all data
         ClientsToGame[username] = undefined;
@@ -173,7 +173,7 @@ module.exports = function (socket) {
   socket.on('game:end',function(msg){
     //save and remove data redis -> mongodb
   	var username = socket.client.request.user.username;
-    // pub.publish('remove', JSON.stringify({type: 'remove', data: ClientsToGame[username], user:socket.client.request.user }));
+     pub.publish('remove', JSON.stringify({type: 'remove', data: ClientsToGame[username], user:socket.client.request.user }));
 
   	 ClientsToGame[username] = undefined;
 
