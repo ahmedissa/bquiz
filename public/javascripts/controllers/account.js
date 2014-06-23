@@ -9,7 +9,7 @@ angular.module('bqApp')
           $scope.score = user.score;
         }
       );
-    $score.avatar = get_gravatar($rootScope.currentUser.email, size)
+    $scope.avatar = get_gravatar($rootScope.currentUser.email, size)
 
   	Socket.on('send:time', function (data) {
     	$scope.time = data;
