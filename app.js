@@ -42,7 +42,6 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 
-var USERS = [{_id: 0, _email: "as@gmail.com" , _user: "as", _password: "hi"}] 
 
 app.disable('etag');
 // cookieParser should be above session
@@ -55,10 +54,11 @@ app.use(methodOverride());
 
 // express session storage
 sessionStore = new session.MemoryStore();
+var redisStore = new RedisStore();
 app.use(session({
   name: 'connect.sid',
   secret: 'u3i59jldsgj9023458',
-  store: sessionStore,
+  store: redisStore,
   
 }));
 
@@ -136,7 +136,7 @@ io.use(passportSocketIo.authorize({
   secret:      'u3i59jldsgj9023458',    // the session_secret to parse the cookie
   success:     onAuthorizeSuccess,  // *optional* callback on success - read more below
   fail:        onAuthorizeFail,     // *optional* callback on fail/error - read more below
-  store: sessionStore
+  store: redisStore
 }));
 
 function onAuthorizeSuccess(data, accept){
