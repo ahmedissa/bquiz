@@ -8,9 +8,8 @@ angular.module('bqApp')
 
 
     var nextquestion = function  (data) {
-        console.log(data);
+
         if (data == "finish") {
-              console.log("done");
               $scope.correctid = game.questions[9].solution;
 
               game = undefined;

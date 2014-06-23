@@ -106,7 +106,6 @@ UserSchema.statics.addScore = function (playerId, scorev){
 
   function callback (err, numAffected) {
       if (err) console.log(err);
-      console.log("addScore" + numAffected);
   });
 /*
   this.findById(playerId, function(err, p) {

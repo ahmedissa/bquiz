@@ -140,7 +140,6 @@ io.use(passportSocketIo.authorize({
 }));
 
 function onAuthorizeSuccess(data, accept){
-  console.log('successful connection to socket.io');
 
   // The accept-callback still allows us to decide whether to
   // accept the connection or not.
@@ -150,7 +149,6 @@ function onAuthorizeSuccess(data, accept){
 function onAuthorizeFail(data, message, error, accept){
   if(error)
     throw new Error(message);
-  console.log('failed connection to socket.io:', message);
 
   // We use this callback to log all of our failed connections.
   accept(null, false);
@@ -205,7 +203,7 @@ var routes = require('./routes/index');
 
 //app.get('/', routes.index);
 
-server.listen(3000, function(){
+server.listen(3550, function(){
   console.log("Express server listening ");
 });
 

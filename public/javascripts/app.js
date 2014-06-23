@@ -7,7 +7,7 @@ angular.module('bqApp', [
  	'ngRoute'])
 .factory('Socket', function (socketFactory) {
   return socketFactory({
-    ioSocket: io.connect('http://localhost:3000')
+    ioSocket: io.connect('http://localhost:3550')
   });
 })
 .config(function ($routeProvider, $locationProvider) {

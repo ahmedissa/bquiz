@@ -55,17 +55,13 @@ client.on("subscribe", function (channel, count) {
 
 
 client.on("message", function (channel, message) {
-      console.log("redis message json");
       var _message = JSON.parse(message);
       if (_message.type === 'set') {
-        console.log("redis message set");
 
         storge.HSET("user:"+_message.data.username,'game', JSON.stringify(_message.data));
 
       } else{
-        console.log("redis message save game");
         var game = new Game();
-        console.log(_message.data.date);
 
         game.player = _message.user._id;
         game.plants = _message.data.plants;
@@ -76,7 +72,6 @@ client.on("message", function (channel, message) {
             if (err) {
               console.log(err);
             } else {
-              console.log("a game has been saved");
             }
         });
         User.addScore(_message.user._id,_message.data.righta);
@@ -113,12 +108,10 @@ module.exports = function (socket) {
         socket.emit('game:new',ClientsToGame[uname]);
 
         pub.publish('save',JSON.stringify({type: 'set', data: ClientsToGame[uname]}));
-        console.log("new game");
 
 
       });
   	}else{
-            console.log("resume game");
 
       socket.emit('game:new',ClientsToGame[uname]);
 
@@ -128,16 +121,12 @@ module.exports = function (socket) {
 
 
   socket.on('game:answer', function(msg,func){
-    console.log("game:answer data");
     if (msg <0 || msg < 4) { return;};
-        console.log("game:answer " + msg); 
 
   	var username = socket.client.request.user.username;
   	var game = ClientsToGame[username];
   	if (game != undefined) {
-      console.log("game:answer " + game.questions[game.postion].solution)
       if (msg == game.questions[game.postion].solution) {
-        console.log("game:answer true"); 
         game.righta =  game.righta +1;
         game.playeranswers[game.postion] = true;
       };
