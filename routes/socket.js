@@ -122,7 +122,7 @@ module.exports = function (socket) {
 
   socket.on('game:answer', function(msg,func){
     if (msg <0 || msg < 4) { return;};
-
+    var _user = socket.client.request.user;
   	var username = socket.client.request.user.username;
   	var game = ClientsToGame[username];
   	if (game != undefined) {
@@ -143,7 +143,7 @@ module.exports = function (socket) {
       }else{
 
         setTimeout(function  (argument) {
-          pub.publish('save', JSON.stringify({type: 'remove', data: game, user:socket.client.request.user }));
+          pub.publish('save', JSON.stringify({type: 'remove', data: game, user:_user }));
         }, 500);
 
         // remove redis -> save data mongodb -> send to user all data
