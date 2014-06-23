@@ -124,7 +124,6 @@ module.exports = function (socket) {
     if (msg <0 || msg < 4) { return;};
     var _user = socket.client.request.user;
   	var username = socket.client.request.user.username;
-    console.log(username);
   	var game = ClientsToGame[username];
   	if (game != undefined) {
       if (msg == game.questions[game.postion].solution) {
