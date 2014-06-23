@@ -56,13 +56,13 @@ client.on("subscribe", function (channel, count) {
 
 client.on("message", function (channel, message) {
       var _message = JSON.parse(message);
+
       if (_message.type === 'set') {
 
         storge.HSET("user:"+_message.data.username,'game', JSON.stringify(_message.data));
 
       } else{
         var game = new Game();
-
         game.player = _message.user._id;
         game.plants = _message.data.plants;
         game.right  = _message.data.righta;
@@ -105,7 +105,7 @@ module.exports = function (socket) {
   	if (ClientsToGame[uname] == undefined) {
       basex.qcreator(function  (ids,qs) {
         ClientsToGame[uname] = {date: (new Date()).toString(), username:uname, righta: 0, plants: ids, questions: qs, playeranswers: [false,false,false,false,false,false,false,false,false,false], postion: 0};
-        socket.emit('game:new',ClientsToGame[uname]);
+        socket.emit('game:new',ClientsToGame[uname]);     
 
         pub.publish('save',JSON.stringify({type: 'set', data: ClientsToGame[uname]}));
 
@@ -142,7 +142,9 @@ module.exports = function (socket) {
 
       }else{
 
-        pub.publish('save', JSON.stringify({type: 'remove', data: game, user:socket.client.request.user }));
+        setTimeout(function  (argument) {
+          pub.publish('save', JSON.stringify({type: 'remove', data: game, user:socket.client.request.user }));
+        }, 500);
 
         // remove redis -> save data mongodb -> send to user all data
         ClientsToGame[username] = undefined;
