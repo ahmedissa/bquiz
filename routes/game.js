@@ -7,8 +7,7 @@ var mongoose = require('mongoose'),
 exports.show = function(req, res){
   if(req.user) {
 	var gameId = req.params.gameId;
-	console.log("game"+ gameId);
-
+	
 	Game.findById(ObjectId(gameId), function (err, game) {
 	    if (err) {
 	      return next(new Error('Failed to load User'));
