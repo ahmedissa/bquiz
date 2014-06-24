@@ -31,8 +31,11 @@ angular.module('bqApp')
       Auth.logout(function(err) {
         if(!err) {
           $location.path('/login');
+        }else{
+                  console.log(err);
 
         }
+        
       });
     };
     $scope.convertdate = function (argument) {

@@ -15,7 +15,10 @@ angular.module('bqApp')
               $scope.plants.push (plant);
             });
           });
+        }, function  (err) {
+          $location.path('/account');
         }
+
       );
 
 

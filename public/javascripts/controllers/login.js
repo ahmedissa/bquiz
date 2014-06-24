@@ -3,6 +3,7 @@
 angular.module('bqApp')
   .controller('LoginCtrl', function ($rootScope,$scope, Auth, $location) {
     if ($rootScope.currentUser) {
+        console.log($rootScope.currentUser);
        $location.path('/account');
     };
     $scope.error = {};
@@ -16,10 +17,12 @@ angular.module('bqApp')
         function(err) {
           $scope.errors = {};
           if (!err) {
+            $scope.error = {"display": "none"};
+            $scope.errormsg = "";
             $location.path('/account');
           } else {
-            console.log(err);
-
+            $scope.error = {"display": "block"};
+            $scope.errormsg = err;
           }
       });
     };

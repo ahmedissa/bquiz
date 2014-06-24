@@ -94,7 +94,7 @@ UserSchema.pre('save', function(next) {
 });
 
 UserSchema.statics.toptenplayers = function (cb) {
-	this.find().sort('score').limit(5).select('username score').exec(cb);
+	this.find().sort('-score').limit(5).select('username score').exec(cb);
 };
 
 UserSchema.statics.addScore = function (playerId, scorev){
