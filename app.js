@@ -172,6 +172,10 @@ var games = require('./routes/game');
 var plants = require('./routes/plants');
   app.get('/auth/plants/:plantId', plants.show);
 
+var sparql = require('./routes/sparql');
+  app.get('/auth/sparql/:plant', sparql.show);
+
+
 var session = require('./routes/auth');
 
 app.get('/auth/session', 
