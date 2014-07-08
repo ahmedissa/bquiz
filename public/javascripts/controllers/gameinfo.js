@@ -43,6 +43,14 @@ angular.module('bqApp')
 
     };
 
+   $scope.report = function  (plant) {
+      $http.get('/auth/plants/' + plant._id + '/report').success(function(sp) {
+        console.log(sp);
+      });
+
+
+    };
+
     $scope.changeContent = function  (info,plant,index) {
 
       plant.sparql.active[1] = info[1];

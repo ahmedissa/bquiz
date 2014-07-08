@@ -53,7 +53,7 @@ exports.get = function(id,cb) {
 				_infos.push(['Locality',_locality.text()]);
 			}
 
-			cb(false,{associatedMedia:_associatedMedia,infos:_infos });
+			cb(false,{_id: id, associatedMedia:_associatedMedia,infos:_infos });
 
 		}
 	);

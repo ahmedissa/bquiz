@@ -44,7 +44,7 @@ UserSchema
 UserSchema
   .virtual('user_info')
   .get(function () {
-    return { '_id': this._id, 'username': this.username, 'email': this.email, 'score' : this.score};
+    return { '_id': this._id, 'username': this.username, 'admin': this.admin, 'email': this.email, 'score' : this.score};
   });
 
 /**

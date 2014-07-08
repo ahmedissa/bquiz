@@ -158,29 +158,38 @@ io.on('connection',  require('./routes/socket') );
 
 // Routes
 
+function ensureAuthenticated(req, res, next) {
+      if (req.isAuthenticated()) { return next(); }
+      res.send(401);
+}
+
+
 // User Routes
 var users = require('./routes/users');
-  app.post('/auth/users', users.create);
-  app.get('/auth/users/:userId', users.show);
-  app.get('/auth/users/:userId/games', users.latestgames);
-  app.get('/auth/users/:userId/topusers', users.topusers);
+  app.post('/auth/users',ensureAuthenticated, users.create);
+  app.get('/auth/users/:userId',ensureAuthenticated, users.show);
+  app.get('/auth/users/:userId/games',ensureAuthenticated, users.latestgames);
+  app.get('/auth/users/:userId/topusers',ensureAuthenticated ,users.topusers);
 
 
 var games = require('./routes/game');
-  app.get('/auth/games/:gameId', games.show);
+  app.get('/auth/games/:gameId',ensureAuthenticated, games.show);
 
 var plants = require('./routes/plants');
-  app.get('/auth/plants/:plantId', plants.show);
+  app.get('/auth/plants/reported',ensureAuthenticated,plants.allreports);
+
+  app.get('/auth/plants/:plantId',ensureAuthenticated, plants.show);
+
+  app.get('/auth/plants/:plantId/report',ensureAuthenticated, plants.report);
 
 var sparql = require('./routes/sparql');
-  app.get('/auth/sparql/:plant', sparql.show);
+  app.get('/auth/sparql/:plant',ensureAuthenticated, sparql.show);
 
 
 var session = require('./routes/auth');
 
 app.get('/auth/session', 
    function ensureAuthenticated(req, res, next) {
-      console.log(req.user);
       if (req.isAuthenticated()) { return next(); }
       res.send(401);
     }
